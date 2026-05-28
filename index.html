@@ -342,6 +342,9 @@
 
             // 가용한 강수에 맞춰 콤보박스 동적 세팅 (32대 대진 대응)
             selectEl.innerHTML = "";
+            if (filtered.length >= 32) {
+                selectEl.innerHTML += `<option value="32">32강전 (32개 경쟁)</option>`;
+            }
             if (filtered.length >= 16) {
                 selectEl.innerHTML += `<option value="16">16강전 (16개 경쟁)</option>`;
             }
@@ -380,7 +383,7 @@
             if (selectedRound === 0 || filtered.length < selectedRound) {
                 openModal(
                     "식당 후보군이 부족합니다", 
-                    "현재 설정한 카테고리 필터 조건 하에서는 선택한 강수의 월드컵을 진행할 수 없습니다. 다른 필터를 조절해 보세요!"
+                    "현재 설정한 카테고리 필터 조건 하에서는 선택한 강수의 월드컵을 진행할 수 없습니다. 필터를 해제하거나 다른 구역을 선택해 주세요!"
                 );
                 return;
             }
@@ -427,7 +430,7 @@
             document.getElementById("card1-name").innerText = candidate2.name;
             document.getElementById("card1-desc").innerText = candidate2.desc;
             document.getElementById("card1-cat").innerText = `🍴 ${candidate2.cat}`;
-            document.getElementById("card1-price").innerText = `💸 ${candidate2.price}`;
+            document.getElementById("card1-price").innerText = `💸 ${candidate1.price}`;
         }
 
         // 카드 클릭 승자 결정
